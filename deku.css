@@ -1,0 +1,275 @@
+/* =========================================================
+   RESET AND BASICS
+   ========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;   /* keeps headings clear of the sticky navbar */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f7fb;
+  color: #0f1b2d;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+h1, h2, h3, h4, p {
+  margin-bottom: 12px;
+}
+
+h2 {
+  color: #2f5bea;
+}
+
+section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* =========================================================
+   MOBILE-FIRST: these styles are for phones.
+   Bigger screens are handled in the media query at the bottom.
+   ========================================================= */
+
+/* ---------- NAVBAR (sticky) ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  background: #0f1b2d;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  gap: 16px;
+}
+
+.nav-links a {
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffb703;
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  display: flex;
+  flex-direction: column-reverse;   /* photo on top on phones */
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+}
+
+.hero-text {
+  animation: fadeUp 1s ease;
+}
+
+.avatar {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 6px solid #ffb703;
+  border-radius: 50%;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn,
+button {
+  padding: 12px 24px;
+  background: #2f5bea;
+  color: white;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.btn {
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.btn:hover,
+button:hover {
+  background: #1f43c4;
+}
+
+/* ---------- ANIMATIONS ---------- */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* ---------- GRIDS: SKILLS AND PROJECTS ---------- */
+.skills-grid,
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.skill,
+.card {
+  padding: 20px;
+  background: white;
+  border: 1px solid #dde4ee;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.skill:hover,
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.skill {
+  text-align: center;
+}
+
+/* ---------- CARD BADGE (relative + absolute) ---------- */
+.card {
+  position: relative;      /* the badge is positioned inside this box */
+  padding-bottom: 48px;    /* room for the badge */
+}
+
+.badge {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  padding: 2px 10px;
+  background: #e8eefc;
+  color: #2f5bea;
+  font-size: 0.8rem;
+  border-radius: 20px;
+}
+
+/* ---------- EDUCATION ---------- */
+.edu-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.item {
+  padding-left: 16px;
+  margin-bottom: 16px;
+  border-left: 4px solid #2f5bea;
+}
+
+/* ---------- CONTACT FORM ---------- */
+.contact {
+  text-align: center;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto 24px;
+}
+
+label {
+  display: block;
+  text-align: left;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  font-family: inherit;
+  border: 1px solid #dde4ee;
+  border-radius: 8px;
+}
+
+button {
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  padding: 24px;
+  background: #0f1b2d;
+  color: white;
+  text-align: center;
+}
+
+/* ---------- BACK TO TOP (fixed) ---------- */
+.top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 16px;
+  background: #2f5bea;
+  color: white;
+  border-radius: 8px;
+}
+
+/* =========================================================
+   BIGGER SCREENS (700px and wider)
+   ========================================================= */
+@media (min-width: 700px) {
+  .navbar {
+    flex-direction: row;
+  }
+
+  .nav-links {
+    gap: 24px;
+  }
+
+  .hero {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .edu-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
